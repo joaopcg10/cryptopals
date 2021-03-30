@@ -1,5 +1,3 @@
-import base64
-
 def get_score(string):
     freq = {
         'e': 57, 'a': 43, 'r': 38, 'i': 38, 'o': 36,
