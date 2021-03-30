@@ -17,7 +17,10 @@ def fixed_xor(str1,str2):
 
     return hex(int(xored_string,2))[2:]
 
-str1 = "1c0111001f010100061a024b53535009181c"
-str2 = "686974207468652062756c6c277320657965"
+def main():
+    str1 = "1c0111001f010100061a024b53535009181c"
+    str2 = "686974207468652062756c6c277320657965"
 
-print(fixed_xor(str1,str2))
+    print(fixed_xor(str1,str2))
+if __name__ == "__main__":
+    main()

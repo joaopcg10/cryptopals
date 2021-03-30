@@ -36,5 +36,8 @@ def detect_single_byte_xor(coded_string):
         
     return max_score_str
 
-str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-print(detect_single_byte_xor(str))
+def main():
+    str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+    print(detect_single_byte_xor(str))
+if __name__ == "__main__":
+    main()
