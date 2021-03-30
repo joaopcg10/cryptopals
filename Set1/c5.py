@@ -13,6 +13,7 @@ def main():
     str = "Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal"
     
     hex_xored_bytes = repeating_byte_xor(key.encode(),str.encode()).hex()
-    
+    print(hex_xored_bytes)
+
 if __name__ == "__main__":
     main()

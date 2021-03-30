@@ -1,3 +1,6 @@
+from c3 import detect_single_byte_xor
+import base64
+
 def hamming(str1,str2):
     bin_str1 = bin(int(str1.hex(),16))[2:]
     bin_str2 = bin(int(str2.hex(),16))[2:]
@@ -16,10 +19,34 @@ def hamming(str1,str2):
     return hamming
 
 def main():
-    str1 = "this is a test"
-    str2 = "wokka wokka!!!"
+    file = open("c6.txt", "r")
+    encoded = base64.b64decode(file.read())
+    print(encoded)
+    min_list = []
+    for key_size in range(2,40):
+        first = encoded[0:key_size]
+        second = encoded[key_size:key_size*2]
+        min_list.append(int(hamming(first,second) / key_size))
 
-    print(hamming(str1.encode(),str2.encode()))
+    print(min_list)
+    key_size = 29
+    print("Key Size: " + str(key_size))
+
+    encoded_chunks = []
+    for i in range(0,len(encoded),key_size):
+        encoded_chunks.append(encoded[i:i+key_size])
+
+    encoded_blocks = [b''] * key_size
+    for chunk in encoded_chunks:
+            for byte in range(len(chunk)):
+                encoded_blocks[byte] += bytes([chunk[byte]])
+
+    
+    key = ""
+    for block in encoded_blocks:
+        key += detect_single_byte_xor(block.hex())[1]
+
+    print("Key: " + key)
     
 if __name__ == "__main__":
     main()

@@ -31,10 +31,11 @@ def detect_single_byte_xor(coded_string):
 
         score = get_score(xored_bytes)
         if score > max_score:
+            key = key_byte
             max_score = score
             max_score_str = xored_bytes
         
-    return max_score_str
+    return max_score_str, chr(key)
 
 def main():
     str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
