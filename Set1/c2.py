@@ -10,7 +10,7 @@ def fixed_xor(str1,str2):
     xored_string = ""
 
     for s1,s2 in zip(bin_str1,bin_str2):
-        if (s1 == '0' and s2 == '1') or (s1 == '1' and s2 == '0'):
+        if s1 != s2:
             xored_string += '1'
         else:
             xored_string += '0'
